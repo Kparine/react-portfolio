@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
 import './App.scss'
+import ScrollableAnchor from 'react-scrollable-anchor'
 import NavHeader from './components/header'
 import NavFooter from './components/footer'
 import NavParallax from './components/parallax'
@@ -14,9 +15,19 @@ class App extends Component {
       <div className="App">
         <NavHeader />
         <NavParallax />
-        <About />
-        <Projects />
-        <Contact />
+
+          <ScrollableAnchor id={'About'}>
+            <About />
+          </ScrollableAnchor> 
+
+          <ScrollableAnchor id={'Projects'}>
+          <Projects />
+          </ScrollableAnchor>
+          
+          <ScrollableAnchor id={'Contact'}>
+          <Contact />
+          </ScrollableAnchor>
+
         <NavFooter />
       </div>
     )

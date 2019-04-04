@@ -10,15 +10,15 @@ export default class NavHeader extends Component {
             <Nav className="ml-auto" navbar>
               
               <NavItem>
-                <NavLink href="/components/about">About</NavLink>
+                <NavLink href='#About'>About</NavLink>
               </NavItem>
               
               <NavItem>
-                <NavLink href="/components/project">Projects</NavLink>
+                <NavLink href='#Projects'>Projects</NavLink>
               </NavItem>
               
               <NavItem>
-                <NavLink href="/components/contact">Contact</NavLink>
+                <NavLink href='#Contact'>Contact</NavLink>
               </NavItem>
 
             </Nav>
