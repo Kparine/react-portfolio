@@ -6,6 +6,7 @@ import NavFooter from './components/footer'
 import NavParallax from './components/parallax'
 import About from './components/about'
 import Projects from './components/projects'
+import Contact from './components/contact'
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
         <NavParallax />
         <About />
         <Projects />
+        <Contact />
         <NavFooter />
       </div>
     )

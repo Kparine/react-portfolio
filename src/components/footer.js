@@ -1,13 +1,17 @@
-import React from 'react'
-import { Navbar, NavbarBrand } from 'react-bootstrap'
+import React, { Component } from 'react'
+import { Navbar, Col} from 'react-bootstrap'
 
-function NavFooter() {
-  return (
-    <div>
-      <Navbar id='NavFooter'>
-        <NavbarBrand>kparine314@gmail.com</NavbarBrand>
-      </Navbar>
-    </div>
-  )
+export default class NavFooter extends Component {
+  render(){
+    return (
+      <div id='NavFooter' className='Footer'>
+        <Navbar>
+          <Col>
+            <h4>Put Links to Github, LinkedIn here</h4>
+            <h6>Powered by @coffee</h6>
+          </Col>
+        </Navbar>
+      </div>
+    )
+  }
 }
-export default NavFooter

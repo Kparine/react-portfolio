@@ -22,9 +22,9 @@
   opacity: 0.7;
   width: 100%; }
 
-#NavFooter {
+.Footer {
   display: flex;
   justify-content: center;
-  height: 50px;
+  height: 90px;
   background-color: #2274A5;
   opacity: 0.7; }

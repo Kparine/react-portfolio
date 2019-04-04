@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap'
 
-export default class NavHeader extends React.Component {
+export default class NavHeader extends Component {
   render() {
     return (
       <div>
@@ -10,19 +10,15 @@ export default class NavHeader extends React.Component {
             <Nav className="ml-auto" navbar>
               
               <NavItem>
-                <NavLink href="/components/">About</NavLink>
+                <NavLink href="/components/about">About</NavLink>
               </NavItem>
               
               <NavItem>
-                <NavLink href="/components/">Projects</NavLink>
+                <NavLink href="/components/project">Projects</NavLink>
               </NavItem>
               
               <NavItem>
-                <NavLink href="/components/">Resume</NavLink>
-              </NavItem>
-              
-              <NavItem>
-                <NavLink href="/components/">Contact</NavLink>
+                <NavLink href="/components/contact">Contact</NavLink>
               </NavItem>
 
             </Nav>
