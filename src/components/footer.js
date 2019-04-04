@@ -8,7 +8,7 @@ export default class NavFooter extends Component {
         <Navbar>
           <Col>
             <h4>Put Links to Github, LinkedIn here</h4>
-            <h6>Powered by @coffee</h6>
+            <h6>Powered by black coffee...sometimes with cream. But usually black.</h6>
           </Col>
         </Navbar>
       </div>
