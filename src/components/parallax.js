@@ -8,7 +8,7 @@ export default class NavParallax extends React.Component {
   render() {
     return (
       <div>
-        <Parallax bgImage={image1} strength={500}>
+        <Parallax bgImage={image1} strength={300}>
           <div style={{ height: 500 }}>
           </div>
         </Parallax>

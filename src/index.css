@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto+mono|Rock+Salt");
 .App {
   display: flex;
   flex-direction: column;
@@ -18,13 +19,111 @@
 
 #NavHeader {
   display: flex;
+  justify-content: center;
+  align-content: center;
   background-color: #2274A5;
-  opacity: 0.7;
   width: 100%; }
 
-.Footer {
+#leftJob {
+  font-family: "Roboto Mono", monospace;
+  font-size: 25px;
+  color: #000;
+  text-align: right; }
+
+#rightJob {
+  font-family: "Roboto Mono", monospace;
+  font-size: 25px;
+  color: #000;
+  text-align: start; }
+
+#first {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 65px;
+  color: #D3D6D9; }
+
+#last {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 65px;
+  color: #D3D6D9; }
+
+#left {
+  flex-grow: 0; }
+
+#right {
+  flex-grow: 0; }
+
+#anchor {
+  height: 130px;
+  width: 150px; }
+
+#NavFooter {
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 90px;
   background-color: #2274A5;
-  opacity: 0.7; }
+  font-family: "Montserrat", sans-serif !important;
+  color: #c9cacc; }
+
+#aboutTitle {
+  font-family: "Montserrat", sans-serif !important; }
+
+.logo {
+  width: 40px;
+  height: 30px;
+  margin: 10px; }
+
+#coffee {
+  color: #D3D6D9; }
+
+#About {
+  font-family: "Montserrat", sans-serif !important;
+  margin-bottom: 50px; }
+
+#aboutStyle {
+  margin-top: 50px;
+  border-bottom: 3px solid; }
+
+#Projects {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-bottom: 3px solid;
+  font-family: "Montserrat", sans-serif !important; }
+
+#projectTitleContain {
+  display: flex;
+  justify-content: flex-end; }
+
+#ProjectTitle {
+  font-family: "Montserrat", sans-serif !important;
+  margin-bottom: 30px; }
+
+#echo1 {
+  height: 250px;
+  width: 150px; }
+
+#echo2 {
+  height: 248px;
+  width: 143px; }
+
+#echoImgContain {
+  display: flex;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif !important; }
+
+#echoRow {
+  border-bottom: 2px inset;
+  margin-top: 50px;
+  padding-bottom: 40px; }
+
+#petContain {
+  margin-top: 50px;
+  padding-bottom: 50px; }
+
+#petImg {
+  height: 350px;
+  width: 500px; }
+
+#contactRow {
+  margin: 20px;
+  font-family: "Montserrat", sans-serif !important; }

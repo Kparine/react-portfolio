@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
-import { Container, Col, Row } from 'reactstrap'
+import { Container, Col, Row, Button } from 'reactstrap'
 
 export default class About extends Component {
   render(){
     return (
-      <div>
+      <div id='aboutStyle'>
         <Container>
           <Row>
             <Col>
-              <h1>About. </h1>
+              <h1 id='aboutTitle'>A b o u t . </h1>
+              <Button size='lg' outline color="secondary" onClick="window.location.href = 'https://docs.google.com/document/d/e/2PACX-1vTeirTqlHj33n5q3Hv_LHJe0pfRTnbDA5Yhl5_6_FNeBZZHal3pUN2NOFn3Tdl9g97QbWyFIx3n6Por/pub';">
+              View Resume
+              </Button>{' '}
             </Col>
             <br></br>
             <Col>
