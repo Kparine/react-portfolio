@@ -6,10 +6,15 @@ export default class About extends Component {
     return (
       <div id='aboutStyle'>
         <Container>
+        <p id='skills'><strong>JavaScript | ES6 | React | React Native | Redux  | Expo | Node.js | PostgreSQL | NoSQL | GCP Firestore | Knex.js | Ajax | Express | GitHub | SASS </strong></p>
           <Row>
             <Col>
               <h1 id='aboutTitle'>A b o u t . </h1>
-              <Button size='lg' outline color="secondary" onClick="window.location.href = 'https://docs.google.com/document/d/e/2PACX-1vTeirTqlHj33n5q3Hv_LHJe0pfRTnbDA5Yhl5_6_FNeBZZHal3pUN2NOFn3Tdl9g97QbWyFIx3n6Por/pub';">
+              <div id='edu'>
+              <p> Certificate, Web Development || Galvanize || 2019</p>
+              <p> B.Sc. Geology || Western Washington University  || 2011</p>
+              </div>
+              <Button id='btn' size='lg' outline color="secondary" onClick="window.location.href = 'https://docs.google.com/document/d/e/2PACX-1vTeirTqlHj33n5q3Hv_LHJe0pfRTnbDA5Yhl5_6_FNeBZZHal3pUN2NOFn3Tdl9g97QbWyFIx3n6Por/pub';">
               View Resume
               </Button>{' '}
             </Col>

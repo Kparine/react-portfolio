@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto+mono|Rock+Salt");
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto+mono|Raleway");
 .App {
   display: flex;
   flex-direction: column;
@@ -37,12 +37,12 @@
   text-align: start; }
 
 #first {
-  font-family: "Montserrat", sans-serif !important;
+  font-family: "Raleway", sans-serif;
   font-size: 65px;
   color: #D3D6D9; }
 
 #last {
-  font-family: "Montserrat", sans-serif !important;
+  font-family: "Raleway", sans-serif;
   font-size: 65px;
   color: #D3D6D9; }
 
@@ -76,9 +76,13 @@
 #coffee {
   color: #D3D6D9; }
 
+#skills {
+  margin-bottom: 20px; }
+
 #About {
   font-family: "Montserrat", sans-serif !important;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  margin-top: 10px; }
 
 #aboutStyle {
   margin-top: 50px;
@@ -112,7 +116,7 @@
   font-family: "Montserrat", sans-serif !important; }
 
 #echoRow {
-  border-bottom: 2px inset;
+  border-bottom: 5px inset;
   margin-top: 50px;
   padding-bottom: 40px; }
 
@@ -127,3 +131,9 @@
 #contactRow {
   margin: 20px;
   font-family: "Montserrat", sans-serif !important; }
+
+#btn {
+  margin-top: 20px; }
+
+#edu {
+  margin-top: 20px; }
