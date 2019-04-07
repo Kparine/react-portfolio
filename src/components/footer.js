@@ -5,7 +5,8 @@ export default class NavFooter extends Component {
     return (
 
       <div id='NavFooter' className='Footer' >
-            <h5>Powered by &lt;strong&gt; Coffee. &lt;/strong&gt;</h5>
+            <h6>Powered by &lt;strong&gt; Coffee. &lt;/strong&gt;</h6>
+            <p id='subFooter'>Image by Paris Gore (@parisgore)</p>
         </div>
     )
   }

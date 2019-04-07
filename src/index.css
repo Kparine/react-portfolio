@@ -21,7 +21,7 @@
   display: flex;
   justify-content: center;
   align-content: center;
-  background-color: #2274A5;
+  background-color: #0c264f;
   width: 100%; }
 
 #leftJob {
@@ -60,10 +60,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-flow: column;
   height: 90px;
-  background-color: #2274A5;
+  background-color: #4893b5;
   font-family: "Montserrat", sans-serif !important;
   color: #c9cacc; }
+
+#subFooter {
+  font-size: 15px; }
 
 #aboutTitle {
   font-family: "Montserrat", sans-serif !important; }
@@ -137,3 +141,18 @@
 
 #edu {
   margin-top: 20px; }
+
+#insideStyles {
+  color: #4893b5;
+  font-size: 80px;
+  padding: 20px;
+  position: absolute;
+  top: 40%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  font-family: "Montserrat", sans-serif !important; }
+
+#jobTitle {
+  color: #fff;
+  font-size: 30px;
+  font-family: "Roboto Mono", monospace; }

@@ -1,7 +1,7 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto+mono|Raleway');
 
-$Lapis: #2274A5;
+$Lapis: #0c264f;
 $Black: #131B23;
 $FlashWhite: #D3D6D9;
 $shadow: 0 1px 2px 0 transparentize(#000000, .8) !important;
@@ -80,10 +80,15 @@ $blah: 'Raleway', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-flow: column;
   height: 90px;
-  background-color: $Lapis;
+  background-color: #4893b5;
   font-family: $font;
   color:  #c9cacc;
+}
+
+#subFooter {
+  font-size: 15px;
 }
 
 #aboutTitle {
@@ -174,4 +179,21 @@ $blah: 'Raleway', sans-serif;
 
 #edu {
   margin-top: 20px
+}
+
+#insideStyles {
+  color: #4893b5;
+  font-size: 80px;
+  padding: 20px;
+  position: absolute;
+  top: 40%;
+  left: 25%;
+  transform: translate(-50%,-50%);
+  font-family: $font;
+}
+#jobTitle {
+  color: #fff;
+  font-size: 30px;
+  font-family: $title;
+
 }

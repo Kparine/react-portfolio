@@ -1,16 +1,21 @@
 import React from 'react'
-import { Parallax } from "react-parallax"
+import { Parallax, Background } from "react-parallax"
+import image1 from '../img/face.jpeg'
 
-const image1 =
-  "https://images.unsplash.com/photo-1498092651296-641e88c3b057?auto=format&fit=crop&w=1778&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D";
+
+
 
 export default class NavParallax extends React.Component {
   render() {
     return (
       <div>
-        <Parallax bgImage={image1} strength={300}>
-          <div style={{ height: 500 }}>
+        <Parallax  strength={250}  >
+          <div style={{ height: 600}} >
+            <div id="insideStyles">Kevin Parine<p id='jobTitle'>Software Engineer</p></div>
           </div>
+          <Background >
+            <img src={image1}/>
+          </Background>
         </Parallax>
       </div>
     )
