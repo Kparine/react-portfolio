@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { Container, Col, Row, Button } from 'reactstrap'
 
+
+
+
 export default class About extends Component {
+
   render(){
     return (
       <div id='aboutStyle'>
@@ -14,7 +18,7 @@ export default class About extends Component {
               <p> Certificate, Web Development || Galvanize || 2019</p>
               <p> B.Sc. Geology || Western Washington University  || 2011</p>
               </div>
-              <Button id='btn' size='lg' outline color="secondary" onClick="window.location.href = 'https://docs.google.com/document/d/e/2PACX-1vTeirTqlHj33n5q3Hv_LHJe0pfRTnbDA5Yhl5_6_FNeBZZHal3pUN2NOFn3Tdl9g97QbWyFIx3n6Por/pub';">
+              <Button id='btn' size='lg' onClick={()=> window.open("https://drive.google.com/file/d/1jdKGghlL0t8JoxwfYYijd2nw9DHfvYGQ/view?usp=sharing", "_blank")} outline color="secondary">
               View Resume
               </Button>{' '}
             </Col>

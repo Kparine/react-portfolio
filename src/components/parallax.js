@@ -9,12 +9,12 @@ export default class NavParallax extends React.Component {
   render() {
     return (
       <div>
-        <Parallax  strength={250}  >
-          <div style={{ height: 600}} >
+        <Parallax  strength={200}  >
+          <div style={{ height: 700}} >
             <div id="insideStyles">Kevin Parine<p id='jobTitle'>Software Engineer</p></div>
           </div>
           <Background >
-            <img src={image1}/>
+            <img id='paraImg' alt='Profile' src={image1}/>
           </Background>
         </Parallax>
       </div>
