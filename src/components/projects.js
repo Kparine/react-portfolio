@@ -27,7 +27,7 @@ export default class Projects extends React.Component {
             Project is ongoing with an expected early summer iStore publishing date
             </p>
             <p>           
-            React Native, Redux, JavaScript, GCP Firestore, Expo, CSS, Google Maps API
+            JavaScript, React Native, Redux, Expo, GCP Firestore, Google Maps API, CSS
             </p>
             </Col>
             <Col>
@@ -61,7 +61,7 @@ export default class Projects extends React.Component {
               Collaborated in a scrum adhering to agile methodologies, utilizing Trello and Git version control
               </p>
               <p>
-              JavaScript, React, Redux, HTML/CSS, SASS, Node.js, Express, PostgreSQL, Knex.js, Heroku
+              JavaScript, React, Redux, Node.js, Express, PostgreSQL, Knex.js, Heroku, HTML/CSS, SASS
               </p>
             </Col>
       
