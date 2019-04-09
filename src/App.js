@@ -1,30 +1,28 @@
-import React, { Component } from 'react'
-import "bootstrap/dist/css/bootstrap.min.css"
-import './App.scss'
-import NavFooter from './components/footer'
-import NavParallax from './components/parallax'
-import About from './components/about'
-import Projects from './components/projects'
-import Contact from './components/contact'
-
+import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.scss';
+import NavFooter from './components/footer';
+import NavParallax from './components/parallax';
+import About from './components/about';
+import Projects from './components/projects';
+import Contact from './components/contact';
 
 class App extends Component {
   render() {
-
     return (
       <div className="App">
         <NavParallax />
 
-          <About />
+        <About />
 
-          <Projects />
-          
-          <Contact />
+        <Projects />
+
+        <Contact />
 
         <NavFooter />
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;
