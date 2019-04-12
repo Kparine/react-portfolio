@@ -13,7 +13,7 @@ export default class Projects extends React.Component {
           <Row id="echoRow">
             <Col>
               <Row>
-                <h4>
+                <h4 id="echoTitle">
                   E C H O .
                   <a href="https://github.com/Kparine/echo">
                     <img
@@ -70,7 +70,7 @@ export default class Projects extends React.Component {
               </a>
             </Col>
             <Col>
-              <Row>
+              <Row id="petTitle">
                 <h4>
                   Teacher's Pet
                   <a href="https://github.com/Kparine/echo">

@@ -17,6 +17,38 @@
   height: 0;
   visibility: hidden; }
 
+@media (max-width: 1000px) {
+  div#insideStyles {
+    margin-left: 30px;
+    margin-top: 200px;
+    font-size: 25px;
+    color: #fff; } }
+
+@media (max-width: 411px) {
+  div#insideStyles {
+    margin-left: 30px;
+    margin-top: 200px;
+    font-size: 25px;
+    color: #fff; }
+  p#jobTitle {
+    font-size: 20px; }
+  div#mobileContent {
+    height: 200px; }
+  img#petImg {
+    width: 20em;
+    height: auto; }
+  h1 {
+    font-size: 20px; }
+  #contact {
+    font-size: 14px; }
+  #projectTitleContain {
+    margin-right: 10px; }
+  h4 {
+    padding-left: 10px !important;
+    font-size: 20px !important; }
+  .react-parallax-bgimage {
+    left: 0% !important; } }
+
 #NavHeader {
   display: flex;
   justify-content: center;
@@ -73,8 +105,8 @@
   font-family: "Montserrat", sans-serif !important; }
 
 .logo {
-  width: 40px;
-  height: 30px;
+  width: 30px;
+  height: 25px;
   margin: 10px; }
 
 #coffee {
@@ -136,10 +168,7 @@
   margin: 20px;
   font-family: "Montserrat", sans-serif !important; }
 
-#btn {
-  margin-top: 20px; }
-
-#edu {
+#edu #btn {
   margin-top: 20px; }
 
 #insideStyles {

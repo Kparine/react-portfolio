@@ -8,7 +8,7 @@ export default class Contact extends React.Component {
         <Container>
           <Row>
             <Col>
-              <h1>C o n t a c t .</h1>
+              <h1 id="contact">C o n t a c t .</h1>
             </Col>
             <Col>
               <h6>360.305.0371</h6>
