@@ -49,6 +49,9 @@
   .react-parallax-bgimage {
     left: 0% !important; } }
 
+.react-parallax-bgimage {
+  top: 10% !important; }
+
 #NavHeader {
   display: flex;
   justify-content: center;
