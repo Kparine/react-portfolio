@@ -11,7 +11,7 @@ export default class Projects extends React.Component {
           </Row>
 
           <Row id="echoRow">
-            <Col>
+            <Col md='6' sm='12'>
               <Row>
                 <h4 id="echoTitle">
                   E C H O .
@@ -36,7 +36,7 @@ export default class Projects extends React.Component {
                 Maps API, CSS
               </p>
             </Col>
-            <Col>
+            <Col md='6' sm='12'>
               <div id="echoImgContain">
                 <a href="https://github.com/Kparine/echo">
                   <img
