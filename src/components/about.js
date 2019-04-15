@@ -14,7 +14,7 @@ export default class About extends Component {
             </strong>
           </p>
           <Row>
-            <Col>
+            <Col sm='12'>
               <h1 id="aboutTitle">A b o u t . </h1>
               <div id="edu">
                 <p> Certificate, Web Development || Galvanize || 2019</p>
@@ -36,7 +36,7 @@ export default class About extends Component {
               </Button>{' '}
             </Col>
             <br />
-            <Col>
+            <Col sm='12'>
               <p id="About">
                 Kevin is a tenacious learner, blending his diverse scientific,
                 technical, and team-oriented background. His technical and
