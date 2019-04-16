@@ -60,7 +60,7 @@ export default class Projects extends React.Component {
 
           <Row id="petContain">
             <Col>
-              <a href="https://github.com/TeachersPet/teacher-gradebook-public">
+              <a href="https://teachers-pet-gradebook.herokuapp.com/">
                 <img
                   id="petImg"
                   src={require('../img/teachersPet.png')}
