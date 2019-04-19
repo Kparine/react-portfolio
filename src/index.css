@@ -120,10 +120,12 @@
 #About {
   font-family: "Montserrat", sans-serif !important;
   margin-bottom: 50px;
-  margin-top: 10px; }
+  margin-top: 10px;
+  text-align: justify;
+  text-justify: inter-word; }
 
 #aboutStyle {
-  margin-top: 50px;
+  margin-top: 30px;
   border-bottom: 3px solid; }
 
 #Projects {
@@ -187,3 +189,7 @@
   color: #fff;
   font-size: 30px;
   font-family: "Roboto Mono", monospace; }
+
+p {
+  text-align: justify;
+  text-justify: inter-word; }

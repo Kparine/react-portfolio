@@ -160,10 +160,12 @@ $blah: 'Raleway', sans-serif;
   font-family: $font;
   margin-bottom: 50px;
   margin-top: 10px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 #aboutStyle {
-  margin-top: 50px;
+  margin-top: 30px;
   border-bottom: 3px solid;
 }
 
@@ -241,3 +243,7 @@ $blah: 'Raleway', sans-serif;
   font-family: $title;
 }
 
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
