@@ -27,8 +27,8 @@ export default class Projects extends React.Component {
               <p>
                 A React Native mobile application built for the adventurer to
                 more safely travel alone. Echo enables the user to create a
-                network of friends that are notified of their trip details and
-                when/ if they have returned safely. Project is ongoing with an
+                network of friends that are notified of their trip details, via SMS message, 
+                and when/ if they have returned safely. Project is ongoing with an
                 expected early summer iStore publishing date
               </p>
               <p>
@@ -85,9 +85,9 @@ export default class Projects extends React.Component {
               </Row>
               <p>
                 A React web application designed to help elementary school
-                teachers grade and organize assignments Collaborated in a scrum
+                teachers grade and organize assignments. Collaborated in a scrum
                 adhering to agile methodologies, utilizing Trello and Git
-                version control
+                version control.
               </p>
               <p>
                 JavaScript, React, Redux, Node.js, Express, PostgreSQL, Knex.js,
