@@ -27,7 +27,7 @@ class App extends Component {
           StopPosition={0}
           ShowAtPosition={150}
           EasingType='linear'
-          AnimationDuration={750}
+          AnimationDuration={300}
         />
 
         <NavFooter />

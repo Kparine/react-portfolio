@@ -99,9 +99,9 @@
   align-items: center;
   flex-flow: column;
   height: 90px;
-  background-color: #4893b5;
+  background-color: #5B8B9E;
   font-family: "Montserrat", sans-serif !important;
-  color: #c9cacc; }
+  color: #fff; }
 
 #subFooter {
   font-size: 15px; }
