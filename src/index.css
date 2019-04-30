@@ -47,7 +47,9 @@
     padding-left: 10px !important;
     font-size: 20px !important; }
   .react-parallax-bgimage {
-    left: 0% !important; } }
+    left: 0% !important; }
+  aside.ScrollUpButton__Container {
+    display: none !important; } }
 
 .react-parallax-bgimage {
   top: 10% !important; }
