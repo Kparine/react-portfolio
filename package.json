@@ -22,6 +22,7 @@
     "react-dom": "^16.8.6",
     "react-parallax": "^2.2.0",
     "react-scripts": "2.1.8",
+    "react-scroll-up-button": "^1.6.4",
     "reactstrap": "^8.0.0"
   },
   "scripts": {
