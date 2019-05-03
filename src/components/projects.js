@@ -72,8 +72,8 @@ export default function Projects() {
           <Col>
             <Row id="petTitle">
               <h4>
-                Teacher's Pet
-                <a href="https://github.com/Kparine/echo">
+                Teacher's Pet .
+                <a href="https://github.com/TeachersPet">
                   <img
                     id="teacherGit"
                     src={require('../img/github.png')}
