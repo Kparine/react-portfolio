@@ -14,7 +14,7 @@ export default function Projects() {
           <Col md='6' sm='12'>
             <Row>
               <h4 id="echoTitle">
-                E C H O .
+                E C H O 
                 <a href="https://github.com/Kparine/echo">
                   <img
                     src={require('../img/github.png')}
@@ -72,7 +72,7 @@ export default function Projects() {
           <Col>
             <Row id="petTitle">
               <h4>
-                Teacher's Pet .
+                Teacher's Pet 
                 <a href="https://github.com/TeachersPet">
                   <img
                     id="teacherGit"
