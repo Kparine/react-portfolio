@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Col, Row } from 'reactstrap';
 
 export default function Contact() {
-
   return (
     <div id="contactRow">
       <Container>
