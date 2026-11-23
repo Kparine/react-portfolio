@@ -8,7 +8,8 @@ Repo: `git@github.com:Kparine/react-portfolio.git`, default branch `main`.
 The site is about to be rebuilt per the **Portfolio Refresh Handoff** (see "Refresh plan" below).
 Until the rebuild lands, the code described under "Current site" is what's in production.
 Toolchain migrated to Vite + React 19 on `refresh/astro` (user chose Vite over the handoff's Astro recommendation).
-The no-JS acceptance checks will need prerendering or similar when the redesign starts. Production is still `30a35f1`.
+The no-JS acceptance checks will need prerendering or similar when the redesign starts.
+Production now runs this branch (UI unchanged from the legacy site).
 
 ## Current site
 
@@ -53,9 +54,22 @@ If npm fails with `UNABLE_TO_GET_ISSUER_CERT_LOCALLY`, Homebrew's OpenSSL lost i
 
 ### Deployment
 
-Netlify. There's no `netlify.toml` in the repo, so build settings live in the Netlify UI.
-**Before shipping anything, confirm the deploy branch, build command/publish dir, and domain mapping in Netlify,
-and verify on a Netlify deploy preview before production.**
+Netlify site `festive-hopper-1a00f9` (id `d7317c89-15ef-4c37-92fb-dc38fd0865c9`) serves www.kevinparine.com;
+the apex domain 301s to www. **Deploys are done from this machine with the Netlify CLI** (folder is linked):
+
+```bash
+npm run build && npm test
+netlify deploy --dir=build --alias=refresh-astro   # draft preview → https://refresh-astro--festive-hopper-1a00f9.netlify.app
+netlify deploy --prod --dir=build                   # production (only after the user approves the draft)
+```
+
+CLI deploys upload the local build, so Netlify's dashboard build settings don't apply.
+Rollback: Netlify dashboard → Deploys → publish an earlier deploy.
+
+Dashboard quirks (as of 2026-11-22): the site is GitHub-linked, but its production branch is `master`, which no longer
+exists (repo default is `main`), so git pushes don't deploy. The dashboard Node version is 10; `.nvmrc` (26) would
+override it on a Netlify-side build. Don't set `NODE_ENV=production` there (it skips devDependencies, including Vite).
+First CLI production deploy: 2026-11-22 from `refresh/astro` (`68b4b61`); the previous one was `30a35f1` (2022-01-02).
 
 ## Refresh plan (from the handoff)
 
