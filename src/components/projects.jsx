@@ -1,4 +1,7 @@
-import React from 'react';
+import echoImg from '../img/echo.png';
+import echo2Img from '../img/echo2.png';
+import githubImg from '../img/github.png';
+import teachersPetImg from '../img/teachersPet.png';
 import { Container, Col, Row } from 'reactstrap';
 
 export default function Projects() {
@@ -16,7 +19,7 @@ export default function Projects() {
                 E C H O
                 <a href="https://github.com/Kparine/echo">
                   <img
-                    src={require('../img/github.png')}
+                    src={githubImg}
                     alt="Logo"
                     className="logo"
                   />
@@ -40,7 +43,7 @@ export default function Projects() {
               <a href="https://github.com/Kparine/echo">
                 <img
                   id="echo1"
-                  src={require('../img/echo.png')}
+                  src={echoImg}
                   alt="Logo"
                   className="logo"
                 />
@@ -48,7 +51,7 @@ export default function Projects() {
               <a href="https://github.com/Kparine/echo">
                 <img
                   id="echo2"
-                  src={require('../img/echo2.png')}
+                  src={echo2Img}
                   alt="Logo"
                   className="logo"
                 />
@@ -62,7 +65,7 @@ export default function Projects() {
             <a href="https://teachers-pet-gradebook.herokuapp.com/">
               <img
                 id="petImg"
-                src={require('../img/teachersPet.png')}
+                src={teachersPetImg}
                 alt="Logo"
                 className="logo"
               />
@@ -75,7 +78,7 @@ export default function Projects() {
                 <a href="https://github.com/TeachersPet">
                   <img
                     id="teacherGit"
-                    src={require('../img/github.png')}
+                    src={githubImg}
                     alt="Logo"
                     className="logo"
                   />

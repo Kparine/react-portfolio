@@ -4,7 +4,6 @@
 $Lapis: #0c264f;
 $Black: #131B23;
 $FlashWhite: #D3D6D9;
-$shadow: 0 1px 2px 0 transparentize(#000000, .8) !important;
 $font: 'Montserrat', sans-serif !important;
 $title: 'Roboto Mono', monospace;
 $blah: 'Raleway', sans-serif;
@@ -14,21 +13,6 @@ $blah: 'Raleway', sans-serif;
   flex-direction: column;
   min-height: 100vh;
 }
- 
-.App-content {
-  padding: var( — space) var( — space) 0;
-  width: 100%;
-  flex: 1 0 auto;
-}
-
-.App-content:after {
-  content: ‘\00a0’;
-  display: block;
-  margin-top: var( — space);
-  height: 0;
-  visibility: hidden;
- }
-
 
 @media (max-width: 1000px) {
   div#insideStyles {
@@ -72,7 +56,7 @@ $blah: 'Raleway', sans-serif;
   .react-parallax-bgimage {
     left: 0% !important;
   }
-  aside.ScrollUpButton__Container {
+  #BTTbtn {
     display: none !important;
   } 
 }
@@ -186,6 +170,7 @@ $blah: 'Raleway', sans-serif;
 
 #ProjectTitle {
   font-family: $font;
+  text-align: right;
   margin-bottom: 30px;
 }
 
@@ -249,4 +234,36 @@ $blah: 'Raleway', sans-serif;
 p {
   text-align: justify;
   text-justify: inter-word;
+}
+
+#BTTbtn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(50, 50, 50, 0.5);
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s linear;
+  z-index: 1000;
+
+  &.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: rgba(50, 50, 50, 0.8);
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
 }

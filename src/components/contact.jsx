@@ -1,4 +1,5 @@
-import React from 'react';
+import githubImg from '../img/github.png';
+import linkedinImg from '../img/linkedin.png';
 import { Container, Col, Row } from 'reactstrap';
 
 export default function Contact() {
@@ -16,7 +17,7 @@ export default function Contact() {
 
             <a href="https://github.com/Kparine">
               <img
-                src={require('../img/github.png')}
+                src={githubImg}
                 alt="Logo"
                 className="logo"
               />
@@ -24,7 +25,7 @@ export default function Contact() {
 
             <a href="https://www.linkedin.com/in/kevin-parine/">
               <img
-                src={require('../img/linkedin.png')}
+                src={linkedinImg}
                 alt="Logo"
                 className="logo"
               />

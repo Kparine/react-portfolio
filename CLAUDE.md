@@ -7,48 +7,46 @@ Repo: `git@github.com:Kparine/react-portfolio.git`, default branch `main`.
 
 The site is about to be rebuilt per the **Portfolio Refresh Handoff** (see "Refresh plan" below).
 Until the rebuild lands, the code described under "Current site" is what's in production.
-No implementation or production changes for the refresh have been made yet (baseline: `30a35f1`).
+Toolchain migrated to Vite + React 19 on `refresh/astro` (user chose Vite over the handoff's Astro recommendation).
+The no-JS acceptance checks will need prerendering or similar when the redesign starts. Production is still `30a35f1`.
 
-## Current site (legacy)
+## Current site
 
-Single-page, client-rendered React 16 app on Create React App (`react-scripts` 2.1.8).
+Single-page, client-rendered React 19 app built with Vite 8 (migrated off Create React App in Nov 2026;
+the UI is intentionally unchanged until the refresh). Node 26 LTS via Homebrew (`.nvmrc`; Vite 8 needs >= 22.12).
 
 ```
-public/index.html        CRA template; <title>Kevin Parine</title>
-src/index.js             ReactDOM.render + serviceWorker.unregister(); imports ./index.css
-src/App.js               Section order: NavParallax → About → Projects → Contact → ScrollUpButton → NavFooter
+index.html               Vite entry; <title>Kevin Parine</title>
+vite.config.js           React plugin, build → build/, Vitest (jsdom)
+src/main.jsx             createRoot + StrictMode
+src/App.jsx              Section order: NavParallax → About → Projects → Contact → ScrollUpButton → NavFooter
 src/components/
-  parallax.js            Hero: forest portrait (img/face.jpeg) via react-parallax, name + "Software Developer"
-  about.js               Skills line, education, résumé button (Google Drive link), bio (third person)
-  projects.js            ECHO (React Native trip check-in app) + Teacher's Pet (Heroku demo — link is broken)
-  contact.js             Phone, email, location, GitHub + LinkedIn icons
-  footer.js              Contains photo credit "Image by Paris Gore (@parisgore)" — must be preserved
+  parallax.jsx           Hero: forest portrait (img/face.jpeg) via react-parallax, name + "Software Developer"
+  about.jsx              Skills line, education, résumé button (Google Drive link), bio (third person)
+  projects.jsx           ECHO (React Native trip check-in app) + Teacher's Pet (Heroku demo — link is broken)
+  contact.jsx            Phone, email, location, GitHub + LinkedIn icons
+  scrollUp.jsx           Back-to-top button (replaced react-scroll-up-button, which has no React 19 support)
+  footer.jsx             Contains photo credit "Image by Paris Gore (@parisgore)" — must be preserved
+src/App.scss             Only stylesheet (Sass, compiled by Vite). Mostly ID selectors.
 src/img/                 Images; ocean.jpg and anchor.png are unused
-src/App.test.js          Only test: app mounts without crashing
+src/App.test.jsx         Smoke test: renders, includes name and photo credit
 ```
 
-### Styling (known mess)
-
-There are overlapping Sass paths:
-- `src/App.scss` is the source. `App.js` imports it directly (CRA compiles it via `node-sass` aliased to dart `sass`).
-- `npm run css-build` also compiles `App.scss` → `src/index.css`, which `index.js` imports. So the same styles are loaded twice.
-- `src/App.css` / `App.css.map` are stale, tracked, unused artifacts.
-- Bootstrap 4 CSS is imported globally; components use `reactstrap` (`react-bootstrap` is installed but unused).
-- Styles are mostly ID selectors (`#aboutStyle`, `#echoRow`, …). Fonts: Montserrat, Roboto Mono, Raleway (Google Fonts).
-
-If you edit legacy styles, edit `App.scss` and run `npm run css-build` so `index.css` stays in sync.
+Styling: Bootstrap 5 CSS imported globally; components use `reactstrap` 9. Fonts: Montserrat, Roboto Mono,
+Raleway (Google Fonts `@import` in App.scss). Keep all React-related packages on their latest versions.
 
 ### Commands
 
 ```bash
 npm install
-npm start          # sass watch + CRA dev server on :3000
+npm run dev        # Vite dev server on :5173
 npm run build      # production build → build/
-CI=true npm test   # run the single mount test non-interactively
+npm run preview    # serve build/ on :4173
+npm test           # Vitest, non-interactive
 ```
 
-Verified working on Node 17.3.0 / npm 8.3.0 (no `--openssl-legacy-provider` needed).
-`.eslintrc` extends `wesbos` (not installed); CRA uses its own `react-app` config from package.json.
+If npm fails with `UNABLE_TO_GET_ISSUER_CERT_LOCALLY`, Homebrew's OpenSSL lost its CA link:
+`brew postinstall ca-certificates openssl@4`.
 
 ### Deployment
 
@@ -75,7 +73,7 @@ The mockup is a composition reference, not a pixel spec.
 - **About:** forest portrait + first-person bio connecting geology/fieldwork to engineering, plus a contact link. Keep the Paris Gore photo credit.
 - **Résumé:** recent roles first, then education, with a prominent PDF download. Each role lists scope, contributions, outcomes, and a case-study link where available.
 
-**Recommended stack:** Astro, static routes, case studies as structured Markdown (content collections).
+**Recommended stack (handoff; superseded by Vite + React 19):** Astro, static routes, case studies as structured Markdown (content collections).
 Use a single styling pipeline and load interactive artwork only where it helps the story, with optimized still images as the default fallback.
 
 **Build sequence**
@@ -99,4 +97,3 @@ Don't invent career facts, metrics, or outcomes. Use clearly marked placeholders
 ## Working conventions
 
 - Work on a feature branch (e.g. `refresh/astro`). Don't commit directly to `main`, since it may auto-deploy to production.
-- `react-portfolio/` inside this repo is an untracked duplicate clone of the same commit. Ignore it (don't edit or commit it).

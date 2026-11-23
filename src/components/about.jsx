@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container, Col, Row, Button } from 'reactstrap';
 
 export default function About() {

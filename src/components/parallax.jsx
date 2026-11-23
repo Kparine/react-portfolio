@@ -1,4 +1,3 @@
-import React from 'react';
 import { Parallax } from 'react-parallax';
 import image1 from '../img/face.jpeg';
 
