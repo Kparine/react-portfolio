@@ -13,42 +13,45 @@ Production now runs this branch (UI unchanged from the legacy site).
 
 ## Current site
 
-Single-page, client-rendered React 19 app built with Vite 8 (migrated off Create React App in Nov 2026;
-the UI is intentionally unchanged until the refresh). Node 26 LTS via Homebrew (`.nvmrc`; Vite 8 needs >= 22.12).
+React 19 + **React Router 8 framework mode** + **TypeScript**, built with Vite 8. `ssr: false` with
+`prerender`: every route is rendered to static HTML at build time and hydrated in the browser — no server
+runtime. The UI is still the legacy single page (unchanged since 2022) until the redesign lands.
+Node 26 LTS (`.nvmrc`; React Router needs >= 22.22).
 
 ```
-index.html               Vite entry; <title>Kevin Parine</title>
-vite.config.js           React plugin, build → build/, Vitest (jsdom)
-src/main.jsx             createRoot + StrictMode
-src/App.jsx              Section order: NavParallax → About → Projects → Contact → ScrollUpButton → NavFooter
-src/components/
-  parallax.jsx           Hero: forest portrait (img/face.jpeg) via react-parallax, name + "Software Developer"
-  about.jsx              Skills line, education, résumé button (Google Drive link), bio (third person)
-  projects.jsx           ECHO (React Native trip check-in app) + Teacher's Pet (dead Heroku demo link removed; GitHub link kept)
-  contact.jsx            Phone, email, location, GitHub + LinkedIn icons
-  scrollUp.jsx           Back-to-top button (replaced react-scroll-up-button, which has no React 19 support)
-  footer.jsx             Contains photo credit "Image by Paris Gore (@parisgore)" — must be preserved
-src/App.scss             Only stylesheet (Sass, compiled by Vite). Mostly ID selectors.
-src/img/                 Images (face.jpeg is 436 KB; optimize during the redesign)
-public/_headers          Netlify security headers (CSP etc.). Update the CSP when adding external hosts.
-eslint.config.js         ESLint 10 flat config (react-hooks, react-refresh)
-src/App.test.jsx         Smoke test: renders, includes name and photo credit
+react-router.config.ts   ssr:false, prerender list — add every new route here
+vite.config.ts           React Router plugin; ssr.noExternal for CommonJS-only deps (react-parallax)
+vitest.config.ts         Tests run without the React Router plugin (jsdom)
+netlify.toml             Build command, publish dir build/client, NODE_VERSION (overrides the dashboard)
+app/root.tsx             <html> Layout, global CSS/fonts, ErrorBoundary
+app/routes.ts            Route table
+app/routes/home.tsx      "/" — Hero → About → Projects → Contact → ScrollUpButton → Footer
+app/components/*.tsx     Legacy sections. Footer holds "Image by Paris Gore (@parisgore)" — must be preserved
+app/types/               Local type declarations (react-parallax ships raw .ts types that fail strict mode)
+app/app.scss             Legacy styles (Sass, ID selectors) + Bootstrap 5 CSS
+scripts/csp-headers.ts   Post-build: hashes each page's inline scripts into a per-page CSP in _headers
+public/_headers          Base security headers; CSP rules are appended at build time
 ```
 
-Styling: Bootstrap 5 CSS imported globally; components use plain Bootstrap classes (reactstrap was removed:
-its react-popper dependency doesn't support React 19). Fonts: Montserrat, Roboto Mono,
-Raleway (Google Fonts `@import` in App.scss). Keep all React-related packages on their latest versions.
+TypeScript is strict (`noUncheckedIndexedAccess`, `verbatimModuleSyntax`); ESLint uses
+`typescript-eslint` strictTypeChecked. TypeScript is pinned to 6.0.x because typescript-eslint doesn't
+support TS 7 yet. Keep all other React-related packages on their latest versions.
 
 ### Commands
 
 ```bash
 npm install
-npm run dev        # Vite dev server on :5173
-npm run build      # production build → build/
-npm run preview    # serve build/ on :4173
-npm test           # Vitest, non-interactive
-npm run lint       # ESLint
+npm run dev        # dev server (React Router)
+npm run typecheck  # route typegen + tsc
+npm run lint       # ESLint (type-aware)
+npm test           # Vitest
+npm run build      # pre-render → build/client, then CSP hashing
+npm run preview    # serve build/client
 ```
+
+**CSP:** pre-rendered pages contain inline scripts (router context, hydration). Never add
+`'unsafe-inline'` to script-src — `scripts/csp-headers.ts` pins them by hash. To verify a deploy, confirm the
+page hydrates with no CSP violations in the console.
 
 If npm fails with `UNABLE_TO_GET_ISSUER_CERT_LOCALLY`, Homebrew's OpenSSL lost its CA link:
 `brew postinstall ca-certificates openssl@4`.
@@ -63,12 +66,12 @@ the apex domain 301s to www. The site is linked to GitHub via the Netlify GitHub
 - Netlify builds use Node from `.nvmrc` (26); `NODE_VERSION=26` is also set as a Netlify env var. The dashboard's
   Dependency management dropdown can't select it — ignore that. Don't set `NODE_ENV=production` (it skips
   devDependencies, including Vite).
-- Build command `npm run build`, publish dir `build/`.
+- Build settings are in `netlify.toml` (publish dir `build/client`).
 - Preview a branch before merging with the CLI (folder is linked):
 
 ```bash
 npm run build && npm test
-netlify deploy --dir=build --alias=<branch-name>   # → https://<branch-name>--festive-hopper-1a00f9.netlify.app
+netlify deploy --dir=build/client --alias=<branch-name>   # → https://<branch-name>--festive-hopper-1a00f9.netlify.app
 ```
 
 Rollback: Netlify dashboard → Deploys → publish an earlier deploy. Build logs: `netlify logs -d <deploy-id> -s deploy`.

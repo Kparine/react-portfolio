@@ -1,5 +1,4 @@
-
-export default function NavFooter() {
+export default function Footer() {
   return (
     <div id="NavFooter" className="Footer">
       <h6>Powered by &lt;strong&gt; Coffee. &lt;/strong&gt;</h6>

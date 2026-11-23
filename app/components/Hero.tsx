@@ -1,10 +1,10 @@
 import { Parallax } from 'react-parallax';
-import image1 from '../img/face.jpeg';
+import portrait from '../img/face.jpeg';
 
-export default function NavParallax() {
+export default function Hero() {
   return (
     <div>
-      <Parallax bgImage={image1} strength={200}>
+      <Parallax bgImage={portrait} bgImageAlt="Kevin Parine in a forest" strength={200}>
         <div id="mobileContent" style={{ height: 700 }}>
           <div id="insideStyles">
             Kevin Parine<p id="jobTitle">Software Developer</p>

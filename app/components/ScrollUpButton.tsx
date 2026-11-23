@@ -1,13 +1,22 @@
 import { useEffect, useState } from 'react';
 
-export default function ScrollUpButton({ showAt = 150 }) {
+interface ScrollUpButtonProps {
+  /** Scroll offset in pixels after which the button appears. */
+  showAt?: number;
+}
+
+export default function ScrollUpButton({ showAt = 150 }: ScrollUpButtonProps) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > showAt);
+    const onScroll = () => {
+      setVisible(window.scrollY > showAt);
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+    };
   }, [showAt]);
 
   const scrollToTop = () => {

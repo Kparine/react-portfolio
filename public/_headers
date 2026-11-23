@@ -1,5 +1,4 @@
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
@@ -7,3 +6,6 @@
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Per-page Content-Security-Policy rules are appended at build time by
+# scripts/csp-headers.ts (they pin each page's inline scripts by hash).

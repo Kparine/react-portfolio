@@ -1,0 +1,7 @@
+# Netlify build settings live here (they override the dashboard).
+[build]
+  command = "npm run build"
+  publish = "build/client"
+
+[build.environment]
+  NODE_VERSION = "26"
