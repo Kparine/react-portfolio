@@ -4,7 +4,7 @@ https://www.kevinparine.com
 
 ## Stack
 
-React 19, Vite 8, Sass, Bootstrap 5 / reactstrap. Hosted on Netlify.
+React 19, Vite 8, Sass, Bootstrap 5 (CSS only). Hosted on Netlify.
 
 ## Development
 

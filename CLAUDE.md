@@ -35,7 +35,8 @@ eslint.config.js         ESLint 10 flat config (react-hooks, react-refresh)
 src/App.test.jsx         Smoke test: renders, includes name and photo credit
 ```
 
-Styling: Bootstrap 5 CSS imported globally; components use `reactstrap` 9. Fonts: Montserrat, Roboto Mono,
+Styling: Bootstrap 5 CSS imported globally; components use plain Bootstrap classes (reactstrap was removed:
+its react-popper dependency doesn't support React 19). Fonts: Montserrat, Roboto Mono,
 Raleway (Google Fonts `@import` in App.scss). Keep all React-related packages on their latest versions.
 
 ### Commands

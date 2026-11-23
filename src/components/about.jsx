@@ -1,9 +1,8 @@
-import { Container, Col, Row, Button } from 'reactstrap';
 
 export default function About() {
   return (
     <div id="aboutStyle">
-      <Container>
+      <div className="container">
         <p id="skills">
           <strong>
             JavaScript | ES6 | React | React Native | Redux | Expo | Node.js |
@@ -11,28 +10,25 @@ export default function About() {
             GitHub | SASS{' '}
           </strong>
         </p>
-        <Row>
-          <Col md="6" sm="12">
+        <div className="row">
+          <div className="col-sm-12 col-md-6">
             <h1 id="aboutTitle">A b o u t . </h1>
             <div id="edu">
               <p> Certificate, Web Development || Galvanize || 2019</p>
               <p> B.Sc. Geology || Western Washington University || 2011</p>
             </div>
-            <Button
+            <a
               id="btn"
-              tag="a"
+              className="btn btn-outline-secondary btn-lg"
               href="https://drive.google.com/file/d/1jdKGghlL0t8JoxwfYYijd2nw9DHfvYGQ/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              size="lg"
-              outline
-              color="secondary"
             >
               View Resume
-            </Button>{' '}
-          </Col>
+            </a>{' '}
+          </div>
           <br />
-          <Col md="6" sm="12">
+          <div className="col-sm-12 col-md-6">
             <p id="About">
               Kevin is a tenacious learner, blending his diverse scientific,
               technical, and team-oriented background. His technical and
@@ -45,9 +41,9 @@ export default function About() {
               highly skilled in CSS preprocessors, such as SASS and enjoys
               creating aesthetic, simple designs.
             </p>
-          </Col>
-        </Row>
-      </Container>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

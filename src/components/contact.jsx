@@ -1,16 +1,15 @@
 import githubImg from '../img/github.png';
 import linkedinImg from '../img/linkedin.png';
-import { Container, Col, Row } from 'reactstrap';
 
 export default function Contact() {
   return (
     <div id="contactRow">
-      <Container>
-        <Row>
-          <Col>
+      <div className="container">
+        <div className="row">
+          <div className="col">
             <h1 id="contact">C o n t a c t .</h1>
-          </Col>
-          <Col>
+          </div>
+          <div className="col">
             <h6>360.305.0371</h6>
             <h6>kparine314@gmail.com</h6>
             <h6>Seattle, WA</h6>
@@ -30,9 +29,9 @@ export default function Contact() {
                 className="logo"
               />
             </a>
-          </Col>
-        </Row>
-      </Container>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
