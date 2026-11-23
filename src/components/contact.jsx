@@ -18,7 +18,7 @@ export default function Contact() {
             <a href="https://github.com/Kparine">
               <img
                 src={githubImg}
-                alt="Logo"
+                alt="GitHub"
                 className="logo"
               />
             </a>
@@ -26,7 +26,7 @@ export default function Contact() {
             <a href="https://www.linkedin.com/in/kevin-parine/">
               <img
                 src={linkedinImg}
-                alt="Logo"
+                alt="LinkedIn"
                 className="logo"
               />
             </a>

@@ -1,21 +1,22 @@
 # Professional Portfolio
-  
-  https://kevinparine.com
 
-## Technologies Utilized:
+https://www.kevinparine.com
 
-  * React, JavaScript, SASS
+## Stack
 
-### Installation Instructions:
+React 19, Vite 8, Sass, Bootstrap 5 / reactstrap. Hosted on Netlify.
 
-  * Fork/Clone from GitHub.
+## Development
 
-  ```npm install```
+Requires Node 22.12+ (see `.nvmrc`).
 
-  * Start Development Server
+```bash
+npm install
+npm run dev       # dev server at http://localhost:5173
+npm run lint      # ESLint
+npm test          # Vitest
+npm run build     # production build → build/
+npm run preview   # serve the production build locally
+```
 
-  ```npm start```
-
-  * Production Build
-
-  ```npm run build```
+Security headers for Netlify live in `public/_headers`.

@@ -20,7 +20,7 @@ export default function Projects() {
                 <a href="https://github.com/Kparine/echo">
                   <img
                     src={githubImg}
-                    alt="Logo"
+                    alt="ECHO on GitHub"
                     className="logo"
                   />
                 </a>
@@ -44,7 +44,7 @@ export default function Projects() {
                 <img
                   id="echo1"
                   src={echoImg}
-                  alt="Logo"
+                  alt="ECHO sign-in screen"
                   className="logo"
                 />
               </a>
@@ -52,7 +52,7 @@ export default function Projects() {
                 <img
                   id="echo2"
                   src={echo2Img}
-                  alt="Logo"
+                  alt="ECHO home screen with Profile and Create Trip"
                   className="logo"
                 />
               </a>
@@ -62,14 +62,12 @@ export default function Projects() {
 
         <Row id="petContain">
           <Col>
-            <a href="https://teachers-pet-gradebook.herokuapp.com/">
-              <img
-                id="petImg"
-                src={teachersPetImg}
-                alt="Logo"
-                className="logo"
-              />
-            </a>
+            <img
+              id="petImg"
+              src={teachersPetImg}
+              alt="Teacher's Pet gradebook on a laptop"
+              className="logo"
+            />
           </Col>
           <Col>
             <Row id="petTitle">
@@ -79,7 +77,7 @@ export default function Projects() {
                   <img
                     id="teacherGit"
                     src={githubImg}
-                    alt="Logo"
+                    alt="Teacher's Pet on GitHub"
                     className="logo"
                   />
                 </a>

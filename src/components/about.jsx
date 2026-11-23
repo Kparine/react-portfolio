@@ -20,13 +20,11 @@ export default function About() {
             </div>
             <Button
               id="btn"
+              tag="a"
+              href="https://drive.google.com/file/d/1jdKGghlL0t8JoxwfYYijd2nw9DHfvYGQ/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               size="lg"
-              onClick={() =>
-                window.open(
-                  'https://drive.google.com/file/d/1jdKGghlL0t8JoxwfYYijd2nw9DHfvYGQ/view?usp=sharing',
-                  '_blank'
-                )
-              }
               outline
               color="secondary"
             >

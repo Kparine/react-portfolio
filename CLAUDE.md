@@ -23,12 +23,14 @@ src/App.jsx              Section order: NavParallax → About → Projects → C
 src/components/
   parallax.jsx           Hero: forest portrait (img/face.jpeg) via react-parallax, name + "Software Developer"
   about.jsx              Skills line, education, résumé button (Google Drive link), bio (third person)
-  projects.jsx           ECHO (React Native trip check-in app) + Teacher's Pet (Heroku demo — link is broken)
+  projects.jsx           ECHO (React Native trip check-in app) + Teacher's Pet (dead Heroku demo link removed; GitHub link kept)
   contact.jsx            Phone, email, location, GitHub + LinkedIn icons
   scrollUp.jsx           Back-to-top button (replaced react-scroll-up-button, which has no React 19 support)
   footer.jsx             Contains photo credit "Image by Paris Gore (@parisgore)" — must be preserved
 src/App.scss             Only stylesheet (Sass, compiled by Vite). Mostly ID selectors.
-src/img/                 Images; ocean.jpg and anchor.png are unused
+src/img/                 Images (face.jpeg is 436 KB; optimize during the redesign)
+public/_headers          Netlify security headers (CSP etc.). Update the CSP when adding external hosts.
+eslint.config.js         ESLint 10 flat config (react-hooks, react-refresh)
 src/App.test.jsx         Smoke test: renders, includes name and photo credit
 ```
 
@@ -43,6 +45,7 @@ npm run dev        # Vite dev server on :5173
 npm run build      # production build → build/
 npm run preview    # serve build/ on :4173
 npm test           # Vitest, non-interactive
+npm run lint       # ESLint
 ```
 
 If npm fails with `UNABLE_TO_GET_ISSUER_CERT_LOCALLY`, Homebrew's OpenSSL lost its CA link:

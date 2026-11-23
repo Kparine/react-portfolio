@@ -1,7 +1,0 @@
-{
-  "extends": ["wesbos"],
-  "rules": {
-    "global-require": 0,
-    "no-use-before-define": 0
-  }
-}
