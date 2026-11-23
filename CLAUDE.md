@@ -56,21 +56,22 @@ If npm fails with `UNABLE_TO_GET_ISSUER_CERT_LOCALLY`, Homebrew's OpenSSL lost i
 ### Deployment
 
 Netlify site `festive-hopper-1a00f9` (id `d7317c89-15ef-4c37-92fb-dc38fd0865c9`) serves www.kevinparine.com;
-the apex domain 301s to www. **Deploys are done from this machine with the Netlify CLI** (folder is linked):
+the apex domain 301s to www. The site is linked to GitHub via the Netlify GitHub App.
+
+- **Production deploys from `main`.** Every push to `main` builds on Netlify and goes live. Work on a feature
+  branch and merge to `main` only when it's ready to ship.
+- Netlify builds use Node from `.nvmrc` (26); `NODE_VERSION=26` is also set as a Netlify env var. The dashboard's
+  Dependency management dropdown can't select it — ignore that. Don't set `NODE_ENV=production` (it skips
+  devDependencies, including Vite).
+- Build command `npm run build`, publish dir `build/`.
+- Preview a branch before merging with the CLI (folder is linked):
 
 ```bash
 npm run build && npm test
-netlify deploy --dir=build --alias=refresh-astro   # draft preview → https://refresh-astro--festive-hopper-1a00f9.netlify.app
-netlify deploy --prod --dir=build                   # production (only after the user approves the draft)
+netlify deploy --dir=build --alias=<branch-name>   # → https://<branch-name>--festive-hopper-1a00f9.netlify.app
 ```
 
-CLI deploys upload the local build, so Netlify's dashboard build settings don't apply.
-Rollback: Netlify dashboard → Deploys → publish an earlier deploy.
-
-Dashboard quirks (as of 2026-11-22): the site is GitHub-linked, but its production branch is `master`, which no longer
-exists (repo default is `main`), so git pushes don't deploy. The dashboard Node version is 10; `.nvmrc` (26) would
-override it on a Netlify-side build. Don't set `NODE_ENV=production` there (it skips devDependencies, including Vite).
-First CLI production deploy: 2026-11-22 from `refresh/astro` (`68b4b61`); the previous one was `30a35f1` (2022-01-02).
+Rollback: Netlify dashboard → Deploys → publish an earlier deploy. Build logs: `netlify logs -d <deploy-id> -s deploy`.
 
 ## Refresh plan (from the handoff)
 
@@ -114,4 +115,4 @@ Don't invent career facts, metrics, or outcomes. Use clearly marked placeholders
 
 ## Working conventions
 
-- Work on a feature branch (e.g. `refresh/astro`). Don't commit directly to `main`, since it may auto-deploy to production.
+- Work on a feature branch (e.g. `refresh/astro`). Don't commit directly to `main`: it auto-deploys to production.
