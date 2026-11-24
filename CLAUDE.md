@@ -20,14 +20,13 @@ Node 26 LTS (`.nvmrc`; React Router needs >= 22.22).
 
 ```
 react-router.config.ts   ssr:false, prerender list — add every new route here
-vite.config.ts           React Router plugin; ssr.noExternal for CommonJS-only deps (react-parallax)
+vite.config.ts           React Router plugin
 vitest.config.ts         Tests run without the React Router plugin (jsdom)
 netlify.toml             Build command, publish dir build/client, NODE_VERSION (overrides the dashboard)
 app/root.tsx             <html> Layout, global CSS/fonts, ErrorBoundary
 app/routes.ts            Route table
 app/routes/home.tsx      "/" — Hero → About → Projects → Contact → ScrollUpButton → Footer
 app/components/*.tsx     Legacy sections. Footer holds "Image by Paris Gore (@parisgore)" — must be preserved
-app/types/               Local type declarations (react-parallax ships raw .ts types that fail strict mode)
 app/app.scss             Legacy styles (Sass, ID selectors) + Bootstrap 5 CSS
 scripts/csp-headers.ts   Post-build: hashes each page's inline scripts into a per-page CSP in _headers
 public/_headers          Base security headers; CSP rules are appended at build time

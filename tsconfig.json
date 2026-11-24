@@ -36,11 +36,6 @@
     "noImplicitOverride": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "paths": {
-      "react-parallax": [
-        "./app/types/react-parallax.d.ts"
-      ]
-    }
+    "isolatedModules": true
   }
 }

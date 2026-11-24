@@ -52,17 +52,27 @@ $blah: 'Raleway', sans-serif;
     padding-left: 10px !important;
     font-size: 20px !important;
   }
-  .react-parallax-bgimage {
-    left: 0% !important;
+  #heroImg {
+    object-position: left center;
   }
   #BTTbtn {
     display: none !important;
   } 
 }
 
-.react-parallax-bgimage {
-  top: 10% !important;
-} 
+#hero {
+  position: relative;
+  overflow: hidden;
+}
+
+#heroImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 10%;
+}
 
 #NavHeader {
   display: flex;
