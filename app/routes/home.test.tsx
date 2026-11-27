@@ -1,12 +1,24 @@
 import { cleanup, render, screen, within } from '@testing-library/react';
+import { MemoryRouter, Route, Routes } from 'react-router';
 import { afterEach, describe, expect, it } from 'vitest';
 import Home, { meta } from './home';
 
 afterEach(cleanup);
 
+function renderHome(path = '/') {
+  return render(
+    <MemoryRouter initialEntries={[path]}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/v2" element={<h1>v2 home</h1>} />
+      </Routes>
+    </MemoryRouter>,
+  );
+}
+
 describe('home route', () => {
   it('renders every section in order', () => {
-    const { container } = render(<Home />);
+    const { container } = renderHome();
     const headings = Array.from(container.querySelectorAll('h1')).map((h) =>
       h.textContent.replace(/\s+/g, '').toLowerCase(),
     );
@@ -15,12 +27,12 @@ describe('home route', () => {
   });
 
   it('keeps the Paris Gore photo credit', () => {
-    render(<Home />);
+    renderHome();
     expect(screen.getByText('Image by Paris Gore (@parisgore)')).toBeTruthy();
   });
 
   it('opens the résumé in a new tab without leaking the opener', () => {
-    render(<Home />);
+    renderHome();
     const resume = screen.getByRole('link', { name: 'View Resume' });
     expect(resume.getAttribute('target')).toBe('_blank');
     expect(resume.getAttribute('rel')).toBe('noopener noreferrer');
@@ -28,7 +40,7 @@ describe('home route', () => {
   });
 
   it('describes every image', () => {
-    const { container } = render(<Home />);
+    const { container } = renderHome();
     for (const img of Array.from(container.querySelectorAll('img'))) {
       const alt = img.getAttribute('alt') ?? '';
       expect(alt.trim()).not.toBe('');
@@ -37,7 +49,7 @@ describe('home route', () => {
   });
 
   it('links contact profiles by name', () => {
-    render(<Home />);
+    renderHome();
     const contact = screen.getByText('Seattle, WA').parentElement;
     expect(contact).not.toBeNull();
     if (!contact) return;
@@ -51,5 +63,23 @@ describe('home route', () => {
     const tags = meta({} as Parameters<typeof meta>[0]);
     expect(tags).toContainEqual({ title: 'Kevin Parine' });
     expect(tags).toContainEqual(expect.objectContaining({ name: 'description' }));
+  });
+});
+
+describe('v2 flag on the home route', () => {
+  it('redirects ?ui=v2 to the v2 home page', async () => {
+    renderHome('/?ui=v2');
+    expect(await screen.findByRole('heading', { name: 'v2 home' })).toBeTruthy();
+  });
+
+  it('redirects #v2 to the v2 home page', async () => {
+    renderHome('/#v2');
+    expect(await screen.findByRole('heading', { name: 'v2 home' })).toBeTruthy();
+  });
+
+  it('keeps the legacy UI for other values', () => {
+    renderHome('/?ui=b');
+    expect(screen.queryByRole('heading', { name: 'v2 home' })).toBeNull();
+    expect(screen.getByText('Image by Paris Gore (@parisgore)')).toBeTruthy();
   });
 });

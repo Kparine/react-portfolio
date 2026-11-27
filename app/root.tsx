@@ -8,18 +8,10 @@ import {
   ScrollRestoration,
 } from 'react-router';
 import type { Route } from './+types/root';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './app.scss';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'icon', href: '/favicon.ico' },
   { rel: 'manifest', href: '/manifest.json' },
-  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-  { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
-  {
-    rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=Montserrat&family=Raleway&family=Roboto+Mono&display=swap',
-  },
 ];
 
 export function Layout({ children }: { children: ReactNode }) {
@@ -48,7 +40,7 @@ export default function App() {
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   const notFound = isRouteErrorResponse(error) && error.status === 404;
   return (
-    <main className="container py-5">
+    <main style={{ fontFamily: 'system-ui, sans-serif', padding: '48px 24px' }}>
       <h1>{notFound ? 'Page not found' : 'Something went wrong'}</h1>
       <p>
         <a href="/">Back to the home page</a>

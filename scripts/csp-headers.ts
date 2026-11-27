@@ -18,7 +18,7 @@ const BASE_POLICY: Record<string, string[]> = {
   'default-src': ["'self'"],
   'script-src': ["'self'"],
   'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
-  'font-src': ['https://fonts.gstatic.com'],
+  'font-src': ["'self'", 'https://fonts.gstatic.com'],
   'img-src': ["'self'", 'data:'],
   'connect-src': ["'self'"],
   'manifest-src': ["'self'"],

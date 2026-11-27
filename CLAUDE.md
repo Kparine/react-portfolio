@@ -5,32 +5,51 @@ Repo: `git@github.com:Kparine/react-portfolio.git`, default branch `main`.
 
 ## Status
 
-The site is about to be rebuilt per the **Portfolio Refresh Handoff** (see "Refresh plan" below).
-Until the rebuild lands, the code described under "Current site" is what's in production.
-Toolchain migrated to Vite + React 19 on `refresh/astro` (user chose Vite over the handoff's Astro recommendation).
-The no-JS acceptance checks will need prerendering or similar when the redesign starts.
-Production now runs this branch (UI unchanged from the legacy site).
+Two UIs ship from `main` behind a flag (`app/flags.ts`):
+
+- **Legacy UI** (2022 single page) is the default at `/`.
+- **v2 UI** (the redesign from the Portfolio Refresh Handoff) lives at `/v2`, `/about`, `/resume` and
+  `/work/<slug>`. `/?ui=v2` redirects to `/v2` on Netlify (`public/_redirects`); `/#v2` redirects in the
+  browser. v2 pages carry `robots: noindex` and aren't linked from the legacy UI until the switch.
+
+### v2 rollout: how to switch
+
+1. Set `V2_IS_DEFAULT = true` in `app/flags.ts`: `/` renders the v2 Work page, nav links point to `/`, and
+   `noindex` is dropped.
+2. Delete the rule in `public/_redirects`, and make `app/routes/v2.tsx` redirect to `/` (or remove the route
+   and its prerender entry).
+3. Remove the legacy UI: `app/components/`, `app/app.scss`, `app/img/`, `bootstrap`, `sass`, the Google Fonts
+   links in `app/routes/home.tsx`, and the legacy tests in `app/routes/home.test.tsx`.
 
 ## Current site
 
 React 19 + **React Router 8 framework mode** + **TypeScript**, built with Vite 8. `ssr: false` with
 `prerender`: every route is rendered to static HTML at build time and hydrated in the browser — no server
-runtime. The UI is still the legacy single page (unchanged since 2022) until the redesign lands.
-Node 26 LTS (`.nvmrc`; React Router needs >= 22.22).
+runtime. Node 26 LTS (`.nvmrc`; React Router needs >= 22.22).
 
 ```
-react-router.config.ts   ssr:false, prerender list — add every new route here
+react-router.config.ts   ssr:false, prerender list (case-study URLs come from app/ui/content.ts)
 vite.config.ts           React Router plugin
 vitest.config.ts         Tests run without the React Router plugin (jsdom)
 netlify.toml             Build command, publish dir build/client, NODE_VERSION (overrides the dashboard)
-app/root.tsx             <html> Layout, global CSS/fonts, ErrorBoundary
-app/routes.ts            Route table
-app/routes/home.tsx      "/" — Hero → About → Projects → Contact → ScrollUpButton → Footer
-app/components/*.tsx     Legacy sections. Footer holds "Image by Paris Gore (@parisgore)" — must be preserved
-app/app.scss             Legacy styles (Sass, ID selectors) + Bootstrap 5 CSS
+app/flags.ts             v2 rollout flag and ?ui=v2 / #v2 helpers
+app/root.tsx             <html> Layout, ErrorBoundary
+app/routes.ts            Route table: / (home), /v2, /about, /resume, /work/:slug
+app/routes/home.tsx      "/" — legacy UI (or v2 Work once V2_IS_DEFAULT); redirects ?ui=v2 and #v2 to /v2
+app/ui/                  v2 UI: Shell (header/nav/footer), WorkPage, CaseStudyPage, AboutPage, ResumePage
+app/ui/content.ts        All v2 copy: case studies, résumé, contact. Confirmed facts only, no placeholders
+app/ui/v2.css            v2 styles, all scoped under .v2 (coexists with legacy global CSS)
+public/art/*.svg         Case-study artwork (generated; one per case study)
+app/components/*.tsx     Legacy sections (LegacyHome). Footer holds "Image by Paris Gore (@parisgore)"
+app/app.scss             Legacy styles (Sass, ID selectors) + Bootstrap 5 CSS, loaded only by LegacyHome
 scripts/csp-headers.ts   Post-build: hashes each page's inline scripts into a per-page CSP in _headers
 public/_headers          Base security headers; CSP rules are appended at build time
+public/_redirects        /?ui=v2 → /v2 (302) while the legacy UI is the default
 ```
+
+The Work page's project selector is a CSS-only radio group (`:has(:checked)`), so it works without
+JavaScript and hydrates without state. v2 credits the portrait "Photo by Paris Gore (@parisgore)" on About;
+keep it.
 
 TypeScript is strict (`noUncheckedIndexedAccess`, `verbatimModuleSyntax`); ESLint uses
 `typescript-eslint` strictTypeChecked. TypeScript is pinned to 6.0.x because typescript-eslint doesn't
@@ -117,4 +136,5 @@ Don't invent career facts, metrics, or outcomes. Use clearly marked placeholders
 
 ## Working conventions
 
-- Work on a feature branch (e.g. `refresh/astro`). Don't commit directly to `main`: it auto-deploys to production.
+- Work on a feature branch. Don't commit directly to `main`: it auto-deploys to production.
+- Keep unreleased UI behind `app/flags.ts` so everything can merge to `main`.
