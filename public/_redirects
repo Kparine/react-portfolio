@@ -1,4 +1,0 @@
-# v2 UI preview (see app/flags.ts): /?ui=v2 opens the v2 home page.
-# "!" is needed because "/" has its own index.html. 302 keeps it temporary.
-# Delete this rule when V2_IS_DEFAULT becomes true.
-/  ui=v2  /v2  302!

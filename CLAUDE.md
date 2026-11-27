@@ -8,16 +8,15 @@ Repo: `git@github.com:Kparine/react-portfolio.git`, default branch `main`.
 Two UIs ship from `main` behind a flag (`app/flags.ts`):
 
 - **Legacy UI** (2022 single page) is the default at `/`.
-- **v2 UI** (the redesign from the Portfolio Refresh Handoff) lives at `/v2`, `/about`, `/resume` and
-  `/work/<slug>`. `/?ui=v2` redirects to `/v2` on Netlify (`public/_redirects`); `/#v2` redirects in the
-  browser. v2 pages carry `robots: noindex` and aren't linked from the legacy UI until the switch.
+- **v2 UI** (the redesign from the Portfolio Refresh Handoff) lives at hidden routes: `/v2` (Work), `/about`,
+  `/resume` and `/work/<slug>`. No query param or redirect: preview at `/v2`. v2 pages carry
+  `robots: noindex` and aren't linked from the legacy UI until the switch.
 
 ### v2 rollout: how to switch
 
 1. Set `V2_IS_DEFAULT = true` in `app/flags.ts`: `/` renders the v2 Work page, nav links point to `/`, and
    `noindex` is dropped.
-2. Delete the rule in `public/_redirects`, and make `app/routes/v2.tsx` redirect to `/` (or remove the route
-   and its prerender entry).
+2. Make `app/routes/v2.tsx` redirect to `/` (or remove the route and its prerender entry).
 3. Remove the legacy UI: `app/components/`, `app/app.scss`, `app/img/`, `bootstrap`, `sass`, the Google Fonts
    links in `app/routes/home.tsx`, and the legacy tests in `app/routes/home.test.tsx`.
 
@@ -32,10 +31,10 @@ react-router.config.ts   ssr:false, prerender list (case-study URLs come from ap
 vite.config.ts           React Router plugin
 vitest.config.ts         Tests run without the React Router plugin (jsdom)
 netlify.toml             Build command, publish dir build/client, NODE_VERSION (overrides the dashboard)
-app/flags.ts             v2 rollout flag and ?ui=v2 / #v2 helpers
+app/flags.ts             v2 rollout flag (V2_IS_DEFAULT)
 app/root.tsx             <html> Layout, ErrorBoundary
 app/routes.ts            Route table: / (home), /v2, /about, /resume, /work/:slug
-app/routes/home.tsx      "/" — legacy UI (or v2 Work once V2_IS_DEFAULT); redirects ?ui=v2 and #v2 to /v2
+app/routes/home.tsx      "/" — legacy UI (or v2 Work once V2_IS_DEFAULT)
 app/ui/                  v2 UI: Shell (header/nav/footer), WorkPage, CaseStudyPage, AboutPage, ResumePage
 app/ui/content.ts        All v2 copy: case studies, résumé, contact. Confirmed facts only, no placeholders
 app/ui/v2.css            v2 styles, all scoped under .v2 (coexists with legacy global CSS)
@@ -44,7 +43,6 @@ app/components/*.tsx     Legacy sections (LegacyHome). Footer holds "Image by Pa
 app/app.scss             Legacy styles (Sass, ID selectors) + Bootstrap 5 CSS, loaded only by LegacyHome
 scripts/csp-headers.ts   Post-build: hashes each page's inline scripts into a per-page CSP in _headers
 public/_headers          Base security headers; CSP rules are appended at build time
-public/_redirects        /?ui=v2 → /v2 (302) while the legacy UI is the default
 ```
 
 The Work page's project selector is a CSS-only radio group (`:has(:checked)`), so it works without

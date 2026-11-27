@@ -1,4 +1,4 @@
-// v2 home page while the legacy UI is the default; "/?ui=v2" and "/#v2" redirect here.
+// v2 home page (hidden route) while the legacy UI is the default.
 // After the switch, "/" renders WorkPage and this route redirects to "/" (or is removed).
 import type { Route } from './+types/v2';
 import WorkPage from '../ui/WorkPage';

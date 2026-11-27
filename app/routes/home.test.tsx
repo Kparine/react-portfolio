@@ -1,17 +1,14 @@
 import { cleanup, render, screen, within } from '@testing-library/react';
-import { MemoryRouter, Route, Routes } from 'react-router';
+import { MemoryRouter } from 'react-router';
 import { afterEach, describe, expect, it } from 'vitest';
 import Home, { meta } from './home';
 
 afterEach(cleanup);
 
-function renderHome(path = '/') {
+function renderHome() {
   return render(
-    <MemoryRouter initialEntries={[path]}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/v2" element={<h1>v2 home</h1>} />
-      </Routes>
+    <MemoryRouter>
+      <Home />
     </MemoryRouter>,
   );
 }
@@ -63,23 +60,5 @@ describe('home route', () => {
     const tags = meta({} as Parameters<typeof meta>[0]);
     expect(tags).toContainEqual({ title: 'Kevin Parine' });
     expect(tags).toContainEqual(expect.objectContaining({ name: 'description' }));
-  });
-});
-
-describe('v2 flag on the home route', () => {
-  it('redirects ?ui=v2 to the v2 home page', async () => {
-    renderHome('/?ui=v2');
-    expect(await screen.findByRole('heading', { name: 'v2 home' })).toBeTruthy();
-  });
-
-  it('redirects #v2 to the v2 home page', async () => {
-    renderHome('/#v2');
-    expect(await screen.findByRole('heading', { name: 'v2 home' })).toBeTruthy();
-  });
-
-  it('keeps the legacy UI for other values', () => {
-    renderHome('/?ui=b');
-    expect(screen.queryByRole('heading', { name: 'v2 home' })).toBeNull();
-    expect(screen.getByText('Image by Paris Gore (@parisgore)')).toBeTruthy();
   });
 });
